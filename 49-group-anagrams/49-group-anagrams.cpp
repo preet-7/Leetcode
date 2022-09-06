@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        // Base case
 		if(strs.size() == 1)
             return {{strs[0]}};
         
