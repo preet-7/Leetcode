@@ -1,30 +1,20 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string,vector<string>> m;
+        // Base case
+		if(strs.size() == 1)
+            return {{strs[0]}};
         
-        for(int i=0;i<strs.size();i++){
-            string key=getKey(strs[i]);
-            m[key].push_back(strs[i]);
+        vector<vector<string>> ans;
+        unordered_map<string, vector<string>> M;
+        for(int  i = 0; i < strs.size(); i++)
+        {
+            string str = strs[i];
+            sort(strs[i].begin(), strs[i].end()); 
+            M[strs[i]].push_back(str); 
         }
-        
-        vector<vector<string>> result;
-        for(auto it=m.begin();it!=m.end();it++){
-            result.push_back(it->second);
-        }
-        return result;  
-    }
-private:
-    string getKey(string str){
-        vector<int> count(26);
-        for(int i=0;i<str.size();i++){
-            count[str[i]-'a']++;
-        }
-        string key="";
-        for(int j=0;j<26;j++){
-            key.append(to_string(count[j]+'a'));
-        }
-        return key;
-        
+        for(auto i = M.begin(); i != M.end(); i++)
+            ans.push_back(i -> second); 
+        return ans;
     }
 };
