@@ -29,10 +29,8 @@ private:
             }
         }
         index++;
-        
         root->left = build(preorder, inorder, index, i, split - 1);
         root->right = build(preorder, inorder, index, split + 1, j);
-        
         return root;
     }
 };
